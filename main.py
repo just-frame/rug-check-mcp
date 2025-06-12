@@ -23,7 +23,7 @@ def fetch_token_data(token_address: str) -> Dict:
     """Fetch token data from Solsniffer API."""
     headers = {"X-API-KEY": API_KEY, "accept": "application/json"}
     response = requests.get(f"{BASE_URL}/{token_address}", headers=headers)
-    if response.status_code == 200:
+    if response.status_code == 200 or response.status_code == 201:
         return response.json()
     raise Exception(f"API request failed: {response.status_code} - {response.text}")
 
